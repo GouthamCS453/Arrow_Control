@@ -72,7 +72,7 @@ SCROLL_AMOUNT = 3      # Scroll lines per keypress
 ## How It Works
 
 ### State Management
-- **ENABLED** → Arrow/AWSD/E keys are intercepted and converted to mouse actions. All other keys are re-emitted to the OS.
+- **ENABLED** → Arrow/WASD/E keys are intercepted and converted to mouse actions. All other keys are re-emitted to the OS.
 - **DISABLED** → A minimal listener only watches F2 and F4. Every other keystroke reaches the OS untouched.
 
 ### Movement
