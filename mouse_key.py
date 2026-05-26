@@ -1,35 +1,3 @@
-"""
-Arrow Key Mouse Controller
-==========================
-Controls the mouse pointer using keyboard arrow keys.
-Features a floating always-on-top toggle button.
-
-Keybindings (when ENABLED):
-  Arrow Keys     - Move mouse pointer (hold 2 for diagonal)
-  A              - Left click
-  D              - Right click
-  W              - Scroll up
-  S              - Scroll down
-  E + Arrow Key  - Click & drag / select
-  F2             - Toggle controller ON/OFF  (also the floating button)
-  F4             - Exit the program entirely
-
-When DISABLED the keyboard behaves 100% normally — F2 is the only key
-still watched, everything else is untouched.
-
-How suppression works
----------------------
-ENABLED  → suppress=True listener: arrow/AWSD/E keys are consumed here
-           and turned into mouse actions.  All other keys are re-emitted.
-DISABLED → the suppress=True listener is stopped and replaced with a
-           suppress=False listener that only watches F2.  The OS receives
-           every keypress normally with zero interference.
-
-Install dependencies:
-  pip install pynput
-  (tkinter ships with standard Python on Windows)
-"""
-
 import sys
 import threading
 import time
@@ -39,7 +7,7 @@ from pynput import mouse, keyboard
 from pynput.mouse import Button, Controller as MouseController
 from pynput.keyboard import Key, KeyCode, Controller as KbController
 
-# ── Configuration ─────────────────────────────────────────────────────────────
+
 
 MOVE_STEP     = 5      # Base pixels per tick
 ACCELERATION  = 2.5    # Speed multiplier when key held long enough
@@ -47,7 +15,7 @@ ACCEL_DELAY   = 0.4    # Seconds before acceleration kicks in
 TICK_RATE     = 0.016  # ~60 ticks/sec
 SCROLL_AMOUNT = 3      # Scroll lines per keypress
 
-# ── Shared state ──────────────────────────────────────────────────────────────
+
 
 mouse_ctrl = MouseController()
 kb_ctrl    = KbController()
@@ -61,11 +29,10 @@ lock      = threading.Lock()
 
 root: tk.Tk | None = None   # Tkinter root, set in main()
 
-# Active listeners — we keep references so we can stop them on toggle
 _active_listener: keyboard.Listener | None = None
 _listener_lock = threading.Lock()
 
-# ── Key definitions ───────────────────────────────────────────────────────────
+
 
 MOVE_KEYS = {
     Key.up:    ( 0, -1),
@@ -87,7 +54,6 @@ OWNED_KEYS = set(MOVE_KEYS.keys()) | {
     SELECT_KEY, LCLICK_KEY, RCLICK_KEY, SCROLL_UP, SCROLL_DOWN
 }
 
-# ── Movement helpers ──────────────────────────────────────────────────────────
 
 def get_step(key) -> float:
     held = time.monotonic() - key_times.get(key, time.monotonic())
@@ -104,9 +70,6 @@ def re_emit_release(key):
     try: kb_ctrl.release(key)
     except Exception: pass
 
-# ── Arrow key matching (robust) ───────────────────────────────────────────────
-# pynput can report arrow keys with varying vk codes on some platforms.
-# We match by Key enum identity AND by vk as a fallback.
 
 _ARROW_VK = {
     Key.up.value.vk    if hasattr(Key.up.value,    'vk') else None: Key.up,
@@ -256,7 +219,7 @@ def _on_release_enabled(key):
     # (move_loop manages drag_active; we signal via select leaving pressed set)
     # move_loop will detect SELECT_KEY gone from pressed and release the button.
 
-# ── DISABLED listener callbacks (suppress=False) ──────────────────────────────
+
 
 def _on_press_disabled(key):
     """Only intercept F2 and F4; everything else ignored (OS handles it)."""
