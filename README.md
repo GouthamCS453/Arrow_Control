@@ -4,18 +4,18 @@ A Python utility that allows you to control your mouse pointer and perform mouse
 
 ## Features
 
-✓ **Arrow key mouse control** — Move the mouse pointer in all directions  
-✓ **Click and drag/select** — Use keyboard combos for complex interactions  
-✓ **Scroll support** — Scroll up and down with dedicated keys  
-✓ **Double-click & Middle-click** — Dedicated single-key actions (Z, Q)  
-✓ **Smooth speed ramp** — Cursor accelerates gradually like an analog stick  
-✓ **Precision & Turbo modes** — Shift (slow) and Ctrl (fast) speed modifiers  
-✓ **Momentary mouse mode** — Hold Caps Lock for temporary mouse control while typing  
-✓ **Editable speed settings** — GUI settings window, changes apply instantly  
-✓ **Floating hover sheet** — Hover the widget to see all key bindings  
-✓ **Floating toggle button** — Visual indicator and quick toggle  
-✓ **Zero interference when disabled** — When OFF, your keyboard behaves 100% normally  
-✓ **Easy hotkeys** — F2 to toggle, F4 to exit  
+ **Arrow key mouse control** — Move the mouse pointer in all directions  
+ **Click and drag/select** — Use keyboard combos for complex interactions  
+ **Scroll support** — Scroll up and down with dedicated keys  
+ **Double-click & Middle-click** — Dedicated single-key actions (Z, Q)  
+ **Smooth speed ramp** — Cursor accelerates gradually like an analog stick  
+ **Precision & Turbo modes** — Shift (slow) and Ctrl (fast) speed modifiers  
+ **Momentary mouse mode** — Hold Caps Lock for temporary mouse control while typing  
+ **Editable speed settings** — GUI settings window, changes apply instantly  
+ **Floating hover sheet** — Hover the widget to see all key bindings  
+ **Floating toggle button** — Visual indicator and quick toggle  
+ **Zero interference when disabled** — When OFF, your keyboard behaves 100% normally  
+ **Easy hotkeys** — F2 to toggle, F4 to exit  
 
 ## Installation
 
