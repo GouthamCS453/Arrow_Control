@@ -1,0 +1,5 @@
+{
+    "min_speed": 3,
+    "max_speed": 16,
+    "ramp_time": 0.5
+}
