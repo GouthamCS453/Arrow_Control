@@ -68,7 +68,7 @@ A floating green/gray toggle button will appear in the top-right corner of your 
 - **Drag the floating button** — Move it around the screen
 - **Right-click the floating button** — Open speed settings window
 
-### Momentary Mode (Caps Lock)
+### Momentary Mode (Caps Lock)[Experimental]
 
 When the controller is **latched OFF** (toggled off via F2), you can temporarily activate mouse mode by **holding Caps Lock**. The moment you release Caps Lock, the keyboard returns to normal typing.
 
